@@ -15,7 +15,6 @@ function App() {
 
   return (
     <BrowserRouter>
-       <Navbar/>
       <Routes>
       <Route path="/" Component={login}/>
       <Route path="/Home" Component={Home}/>

@@ -40,7 +40,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 2, type: "spring", stiffness: 50 }}
     >
-      <div className="container flex items-center justify-between h-full p-4 mx-auto bg-black">
+      <div className="container flex items-center justify-between h-full p-4 mx-auto bg-pink-600">
         <div className="text-xl font-bold text-white">SIET-EVENTS</div>
         
         <button onClick={() => setOpen(!open)} className="text-white lg:hidden">

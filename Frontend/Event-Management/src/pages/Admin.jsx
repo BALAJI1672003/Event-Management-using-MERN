@@ -4,6 +4,7 @@ import AddEvent from './AddEvent';
 import Navbar from '../components/Navbar';
 import Addadmin from '../pages/Addadmin';
 import BookingComponent from './Bookings';
+import Showusers from './Showusers';
 const { TabPane } = Tabs;
 
 const AdminScreen = () => {
@@ -24,6 +25,9 @@ const AdminScreen = () => {
             </TabPane>
             <TabPane tab="Bookings" key="4">
               <BookingComponent/>
+            </TabPane>
+            <TabPane tab="users" key="5">
+               <Showusers/>
             </TabPane>
           </Tabs>
         </div>

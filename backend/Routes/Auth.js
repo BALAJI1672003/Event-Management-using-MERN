@@ -4,7 +4,7 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 router.post('/register', async (req, res) => {
-  console.log(req.body); // Log the request body to verify the contents
+  console.log(req.body); 
   const { name, email, password, isAdmin } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -32,5 +32,22 @@ router.post('/login', async (req, res) => {
   const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
   res.json({ "token":token });
 })
+router.get('/users', async (req, res) => {
+  try {
+    const users = await User.find(); 
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+});
+
+router.delete('/users/:id', async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id); // Delete user by ID
+    res.json({ message: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+});
 
 module.exports = router;
