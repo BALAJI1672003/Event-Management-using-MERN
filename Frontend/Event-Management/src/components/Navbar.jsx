@@ -41,7 +41,7 @@ const Navbar = () => {
       transition={{ duration: 2, type: "spring", stiffness: 50 }}
     >
       <div className="container flex items-center justify-between h-full p-4 mx-auto bg-pink-600">
-        <div className="text-xl font-bold text-white">SIET-EVENTS</div>
+        <div className="text-xl modern text-white">EventiaHub</div>
         
         <button onClick={() => setOpen(!open)} className="text-white lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,7 +50,7 @@ const Navbar = () => {
         </button>
 
         <div className="hidden h-full lg:flex">
-          <ul className="flex items-center gap-2 space-x-4 font-poppins">
+          <ul className="flex items-center modern gap-2 space-x-4">
             <li>
               <Link to='/upcomingEvents' className="text-xl text-white border-white hover:border-b-2">Upcoming Events</Link>
             </li>

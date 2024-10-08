@@ -43,10 +43,10 @@ const HomePage = () => {
             className="p-10 text-center md:text-left"
           >
             <h1 className="mb-4 text-5xl font-extrabold text-gray-800 md:text-6xl">
-              Welcome to <span className="text-pink-600">SIET EVENTS</span>
+              <span className="text-pink-600">EventiaHub</span><br/>Where Euphoria is Just a Click Away!
             </h1>
             <p className="mb-6 text-xl leading-relaxed text-gray-600 md:text-2xl">
-              Experience the excitement of college life with our extraordinary events! From cultural fests to academic seminars, sports, and beyond, SIET offers a platform where every event shines.
+              Experience the excitement of college life with our extraordinary events! From cultural fests to academic seminars, sports, and beyond. <span className='font-bold'>EventiaHub</span> offers a platform where every event shines.
             </p>
             <Link to='/upcomingEvents'>
               <motion.a
