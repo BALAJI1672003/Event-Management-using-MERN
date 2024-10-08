@@ -1,14 +1,17 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate instead of useHistory
-import sampleImage from '../assets/Screenshot 2024-10-07 123930.png';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 const EventCard = ({ event }) => {
-  const navigate = useNavigate(); // Get navigate function from useNavigate hook
+  const navigate = useNavigate(); 
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleViewDetails = () => {
-    // Navigate to the event details page when the button is clicked
-    navigate(`/event/${event._id}`);
+    setIsLoading(true);
+    setTimeout(() => {
+      navigate(`/event/${event._id}`);
+    }, 500);
   };
+
   const imageUrl = `http://localhost:5000/${event.imageUrl}`;
   return (
     <div className="overflow-hidden rounded-lg shadow-md">
@@ -20,11 +23,12 @@ const EventCard = ({ event }) => {
       <div className="p-4">
         <h3 className="text-lg font-semibold">{event.name}</h3>
         <p className="text-gray-600">{event.description.substring(0, 100)}...</p>
-        <button 
+        <button
           onClick={handleViewDetails}
-          className="px-4 py-2 mt-4 text-white bg-blue-600 rounded hover:bg-blue-700"
+          className={`px-4 py-2 mt-4 text-white rounded ${isLoading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'}`}
+          disabled={isLoading}
         >
-          View Details
+          {isLoading ? 'Loading...' : 'View Details'}
         </button>
       </div>
     </div>

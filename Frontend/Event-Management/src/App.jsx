@@ -25,7 +25,7 @@ function App() {
       <Route path="/admin" Component={AdminScreen}/>
       <Route path="/bookings/:id" Component={BookingEvent}/>
       <Route path="/register" Component={Register}/>
-      <Route path="/event/:eventId" Component={ShowEventDetail} />
+      <Route path="/event/:id" Component={ShowEventDetail} />
       </Routes>
     </BrowserRouter>
       )

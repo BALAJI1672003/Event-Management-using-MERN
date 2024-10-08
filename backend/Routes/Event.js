@@ -23,21 +23,19 @@ router.post('/addEvent', auth, upload.single('image'), async (req, res) => {
   const newEvent = new Event({
     title: req.body.title,
     description: req.body.description,
-    chiefGuest: req.body.chiefGuest, // Added chiefGuest field
+    chiefGuest: req.body.chiefGuest, 
     date: req.body.date,
     price: req.body.price,
     availableSeats: req.body.availableSeats,
-    popularEvent: req.body.popularEvent, // Include popularEvent field
-    imageUrl: req.file.path, // Image URL from the uploaded file
+    popularEvent: req.body.popularEvent, 
+    imageUrl: req.file.path, 
   });
 
   try {
-    // Save the new event to the database
     const savedEvent = await newEvent.save();
-    // Send the saved event back as a response
     res.status(201).json(savedEvent);
   } catch (error) {
-    res.status(400).send(error); // Send error response if something goes wrong
+    res.status(400).send(error);
   }
 });
 
@@ -77,6 +75,18 @@ router.post('/book/:id', auth, async (req, res) => {
     res.status(400).send(error);
   }
 });
+router.get('/details/:id', async (req, res) => {
+  try {
+    console.log(req.params.id); // To log the event ID being requested
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404).json({ message: "Event not found" }); // Add return here
+    }
+    res.json(event); // Send the event details if found
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error }); // Changed to 500 for server errors
+  }
+})
 router.get('/bookings', async (req, res) => {
   const { eventName } = req.query;
 
