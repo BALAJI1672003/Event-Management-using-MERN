@@ -59,17 +59,17 @@ router.get('/popular', async (req, res) => {
 })
 
 router.post('/book/:id', auth, async (req, res) => {
-  const event = await Event.findById(req.params.id);
-  if (!event) return res.status(404).send('Event not found');
-  const newBooking = new Booking({
-    name: event.name,
-    event: event._id,
-    user: req.user._id,
-  });
-
   try {
+    console.log(req.user);
+    const event = await Event.findById(req.params.id);
+    if (!event) return res.status(404).send('Event not found');
+    const newBooking = new Booking({
+      name: event.title,
+      event: event._id,
+      user: req.user.id, 
+    });
+    console.log(newBooking);
     await newBooking.save();
-    await event.save();
     res.json({ message: 'Booking successful!', booking: newBooking });
   } catch (error) {
     res.status(400).send(error);
@@ -91,7 +91,8 @@ router.get('/bookings', async (req, res) => {
   const { eventName } = req.query;
 
   try {
-      const event = await Event.findOne({ name: eventName });
+    console.log(eventName)
+      const event = await Event.findOne({ title: eventName });
       if (!event) {
           return res.status(404).json({ message: 'Event not found' });
       }
@@ -106,6 +107,7 @@ router.get('/bookings', async (req, res) => {
           user: booking.user.name,
           userEmail: booking.user.email,
       }));
+      console.log(formattedBookings);
 
       res.json(formattedBookings);
   } catch (error) {
@@ -113,7 +115,37 @@ router.get('/bookings', async (req, res) => {
       res.status(500).json({ message: 'Server error' });
   }
 });
+router.get('/bookings', async (req, res) => {
+  try {
+    const { eventName } = req.query;
+    if (!eventName) {
+      return res.status(400).json({ message: 'Event name is required.' });
+    }
+    const event = await Event.findOne({ title: eventName });
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found.' });
+    }
+    const bookings = await Booking.find({ event: event._id }).populate('user', 'name email');
+    res.status(200).json(bookings);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error, could not fetch bookings.' });
+  }
+});
+router.delete('/delete/:id', auth, async (req, res) => {
+  try {
 
-module.exports = router;
+    const event = await Event.findById(req.params.id);
+    if (!event) return res.status(404).send('Event not found');
+    if (!req.user.isAdmin) {
+      return res.status(403).send("You don't have permission to delete this event");
+    }
+
+    await Event.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Event deleted successfully' });
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;

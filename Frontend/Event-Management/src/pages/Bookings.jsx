@@ -15,7 +15,7 @@ const BookingComponent = () => {
         try {
             const response = await axios.get(`http://127.0.0.1:5000/api/event/bookings?eventName=${eventName}`);
             setBookings(response.data);
-            toast.success('Bookings fetched successfully!'); // Success toast
+            toast.success('Bookings fetched successfully!');
         } catch (err) {
             console.error(err);
             setError('Failed to fetch bookings. Please try again.');
@@ -46,8 +46,8 @@ const BookingComponent = () => {
                 {bookings.length > 0 ? (
                     bookings.map((booking) => (
                         <li key={booking._id} className='p-2 border-b border-gray-300'>
-                            <p className='font-semibold text-white'>Booking ID: {booking._id}</p>
-                            <p className='text-white'>User: {booking.user.name} (Email: {booking.user.email})</p>
+                            <p className='font-semibold text-white'>Booking ID: {booking.bookingId}</p>
+                            <p className='text-white'>User: {booking.name} (Email: {booking.userEmail})</p>
                         </li>
                     ))
                 ) : (

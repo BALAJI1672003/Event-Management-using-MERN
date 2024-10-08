@@ -30,6 +30,7 @@ export default function Login() {
       if (response.data) {
         toast.success('Login successful!', { position: 'top-center' });
         localStorage.setItem('token',response.data.token);
+        localStorage.setItem('Admin',response.data.isAdmin);
         setTimeout(() => {
           navigate('/home');
         }, 2000); 

@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Addadmin from '../pages/Addadmin';
 import BookingComponent from './Bookings';
 import Showusers from './Showusers';
+
 const { TabPane } = Tabs;
 
 const AdminScreen = () => {
@@ -16,18 +17,22 @@ const AdminScreen = () => {
           Admin Panel
         </h1>
         <div className="flex justify-center mt-10">
-          <Tabs defaultActiveKey="1" className="w-full">
+          <Tabs
+            defaultActiveKey="1"
+            className="w-full"
+            tabBarStyle={{ textAlign: 'center' }} // Center the tab names
+          >
             <TabPane tab="Add Event" key="2">
               <AddEvent />
             </TabPane>
             <TabPane tab="Add User" key="3">
-            <Addadmin/>
+              <Addadmin />
             </TabPane>
             <TabPane tab="Bookings" key="4">
-              <BookingComponent/>
+              <BookingComponent />
             </TabPane>
-            <TabPane tab="users" key="5">
-               <Showusers/>
+            <TabPane tab="Users" key="5">
+              <Showusers />
             </TabPane>
           </Tabs>
         </div>
