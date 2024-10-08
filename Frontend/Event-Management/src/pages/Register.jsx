@@ -37,7 +37,7 @@ const Register = () => {
       toast.success('Account created successfully!', {
         position: "top-center" // Updated this line
       });
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       toast.error('Error creating account', {
         position: "top-center" // Updated this line

@@ -8,18 +8,21 @@ import Contact from './pages/Contact';
 import BookingEvent from './pages/BookingEvent';
 import login from './pages/login';
 import Register from './pages/Register';
+import AdminScreen from './pages/Admin';
+import Addadmin from './pages/Addadmin';
+import Navbar from './components/Navbar';
 function App() {
 
   return (
     <BrowserRouter>
-       
+       <Navbar/>
       <Routes>
       <Route path="/" Component={login}/>
       <Route path="/Home" Component={Home}/>
       <Route path="/popularEvents" Component={popularEvents}/>
       <Route path="/upcomingEvents" Component={UpcomingEvents}/>
       <Route path="/contact" Component={Contact}/>
-      <Route path="/addEvent" Component={AddEvent}/>
+      <Route path="/admin" Component={AdminScreen}/>
       <Route path="/bookings/:id" Component={BookingEvent}/>
       <Route path="/register" Component={Register}/>
       </Routes>

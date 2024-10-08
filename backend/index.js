@@ -7,6 +7,7 @@ const EventRoutes=require('./Routes/Event');
 dotenv.config();
 const app=express();
 app.use(express.json());
+app.use('/uploads/images',express.static('uploads/images'));
 app.use(cors());
 app.use('/api/auth',authRoutes);
 app.use('/api/event',EventRoutes);

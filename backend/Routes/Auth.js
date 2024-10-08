@@ -4,11 +4,12 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 router.post('/register', async (req, res) => {
+  console.log(req.body); // Log the request body to verify the contents
   const { name, email, password, isAdmin } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = new User({ name, email, password: hashedPassword, isAdmin });
-
+  console.log(newUser);
   try {
     const savedUser = await newUser.save();
     res.status(201).send(savedUser);
@@ -16,6 +17,7 @@ router.post('/register', async (req, res) => {
     res.status(400).send(error);
   }
 });
+
 
 // Login
 router.post('/login', async (req, res) => {
