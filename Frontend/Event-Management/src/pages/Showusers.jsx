@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS for React-Toastify
-import { FaUserAlt } from 'react-icons/fa'; // Import user icon from react-icons
+import 'react-toastify/dist/ReactToastify.css';
+import { FaUserAlt } from 'react-icons/fa'; 
 
 function App() {
   const [users, setUsers] = useState([]);
