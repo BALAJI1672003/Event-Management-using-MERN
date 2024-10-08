@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const db = async () => {
-   const URL = 'mongodb+srv://paulsonmsc:1672003@cluster0.rdh3v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+   const URL = 'mongodb://localhost:27017/Event-Management'
 
     try {
         await mongoose.connect(URL);

@@ -33,7 +33,7 @@ const PopularEvents = () => {
     <>
     <Navbar/>
       <div className="flex items-center justify-center min-h-[100%] p-10 pt-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-        <div className="w-screen h-screen m-auto border-2 border-white -z-1 pt-11">
+        <div className="w-screen h-screen m-auto -z-1 pt-11">
           <Carousel slides={slides} />
         </div>
       </div>
