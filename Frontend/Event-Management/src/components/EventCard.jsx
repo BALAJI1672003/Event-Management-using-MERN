@@ -1,12 +1,13 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // useNavigate instead of useHistory
 import sampleImage from '../assets/Screenshot 2024-10-07 123930.png';
 
 const EventCard = ({ event }) => {
-  // const history = useHistory();
-  console.log(event.imageUrl);
+  const navigate = useNavigate(); // Get navigate function from useNavigate hook
+
   const handleViewDetails = () => {
-    // history.push(`/event/${event._id}`);
+    // Navigate to the event details page when the button is clicked
+    navigate(`/event/${event._id}`);
   };
   const imageUrl = `http://localhost:5000/${event.imageUrl}`;
   return (

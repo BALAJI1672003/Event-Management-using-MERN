@@ -20,7 +20,6 @@ router.post('/addEvent', auth, upload.single('image'), async (req, res) => {
     return res.status(403).send('Access Denied');
   }
 
-  // Create a new event using the fields from the request
   const newEvent = new Event({
     title: req.body.title,
     description: req.body.description,
@@ -62,24 +61,16 @@ router.get('/popular', async (req, res) => {
 })
 
 router.post('/book/:id', auth, async (req, res) => {
-  const { seats } = req.body;
-
   const event = await Event.findById(req.params.id);
   if (!event) return res.status(404).send('Event not found');
-
-  if (seats > event.availableSeats) {
-    return res.status(400).send('Not enough available seats');
-  }
-
   const newBooking = new Booking({
+    name: event.name,
     event: event._id,
     user: req.user._id,
-    seats: seats
   });
 
   try {
     await newBooking.save();
-    event.availableSeats -= seats;
     await event.save();
     res.json({ message: 'Booking successful!', booking: newBooking });
   } catch (error) {
@@ -90,18 +81,15 @@ router.get('/bookings', async (req, res) => {
   const { eventName } = req.query;
 
   try {
-      // Find the event by name
       const event = await Event.findOne({ name: eventName });
       if (!event) {
           return res.status(404).json({ message: 'Event not found' });
       }
 
-      // Find bookings related to the event and populate user and event details
       const bookings = await Booking.find({ event: event._id })
-          .populate('user', 'name email') // Populate user fields as needed
+          .populate('user', 'name email')
           .exec();
 
-      // If you want to return the event name in the response, you can do that as well
       const formattedBookings = bookings.map(booking => ({
           bookingId: booking._id,
           name: booking.name,

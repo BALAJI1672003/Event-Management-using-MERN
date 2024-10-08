@@ -38,7 +38,7 @@ export default function Carousel({ slides }) {
             key={index}
             src={s}
             alt={`Slide ${index}`}
-            className="object-cover w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] -z-10"
+            className="object-cover w-full h-[300px] sm:h-[300px] md:h-[300px] lg:h-[600px] -z-10"
           />
         ))}
       </div>

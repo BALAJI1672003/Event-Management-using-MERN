@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import AdminScreen from './pages/Admin';
 import Addadmin from './pages/Addadmin';
 import Navbar from './components/Navbar';
+import ShowEventDetail from './components/ShowEventDetails';
 function App() {
 
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/admin" Component={AdminScreen}/>
       <Route path="/bookings/:id" Component={BookingEvent}/>
       <Route path="/register" Component={Register}/>
+      <Route path="/event/:eventId" Component={ShowEventDetail} />
       </Routes>
     </BrowserRouter>
       )
