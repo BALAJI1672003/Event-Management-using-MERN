@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 z-50 w-full h-16 bg-blue-900 shadow-lg"
+      className="fixed top-0 left-0 z-50 w-screen h-16 bg-pink-600 shadow-lg"
       initial={{ y: -1000 }}
       animate={{ y: 0 }}
       transition={{ duration: 2, type: "spring", stiffness: 50 }}
