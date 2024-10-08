@@ -5,10 +5,10 @@ import axios from 'axios';
 import EventCard from '../components/EventCard'; // Import your EventCard component
 
 let slides = [
+  "https://media.vsstatic.com/image/upload/if_fc_gte_1/g_auto,q_auto,c_fill,w_1680,h_720/if_else/g_center,q_auto,c_fill,w_1680,h_720/if_end/dpr_auto,f_auto/hero/category/17-pop/pop-tickets-1.jpg",
   "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   "https://images.pexels.com/photos/3661650/pexels-photo-3661650.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   "https://images.pexels.com/photos/1983046/pexels-photo-1983046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg?auto=compress&cs=tinysrgb&w=600",
   "https://images.pexels.com/photos/2263410/pexels-photo-2263410.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   "https://images.pexels.com/photos/21790481/pexels-photo-21790481/free-photo-of-woman-sitting-with-arm-raised-in-crowd-at-concert.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 ];
@@ -37,7 +37,6 @@ const PopularEvents = () => {
           <Carousel slides={slides} />
         </div>
       </div>
-      
       <div className="p-10 bg-white">
         <h2 className="mb-6 text-2xl font-semibold text-center">Popular Events</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
