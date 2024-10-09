@@ -21,7 +21,7 @@ const EventCard = ({ event, refreshEvents }) => {
     setIsDeleting(true); 
      
     try {
-      const response = await axios.delete(`http://localhost:5000/api/event/delete/${event._id}`, {
+      const response = await axios.delete(`https://eventmanagement-backend-2.onrender.com/api/event/delete/${event._id}`, {
         headers: {
           Authorization: `Bearer ${token}`, 
         },
@@ -36,7 +36,7 @@ const EventCard = ({ event, refreshEvents }) => {
       setIsDeleting(false); 
     }
   };
-  const imageUrl = `http://localhost:5000/${event.imageUrl}`;
+  const imageUrl = `https://eventmanagement-backend-2.onrender.com/${event.imageUrl}`;
 
   return (
     <div className="overflow-hidden rounded-lg shadow-md">

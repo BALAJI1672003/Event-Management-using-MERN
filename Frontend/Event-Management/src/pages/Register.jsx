@@ -33,7 +33,7 @@ const Register = () => {
     }
   
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/auth/register', formData);
+      const response = await axios.post('https://eventmanagement-backend-2.onrender.com/api/auth/register', formData);
       toast.success('Account created successfully!', {
         position: "top-center" // Updated this line
       });

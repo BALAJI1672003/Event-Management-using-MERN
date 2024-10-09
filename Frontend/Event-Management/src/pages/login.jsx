@@ -25,7 +25,7 @@ export default function Login() {
     const { email, password } = formData;
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/api/auth/login", formData);
+      const response = await axios.post("https://eventmanagement-backend-2.onrender.com/api/auth/login", formData);
       
       if (response.data) {
         toast.success('Login successful!', { position: 'top-center' });

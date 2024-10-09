@@ -39,7 +39,7 @@ const AddAdmin = () => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/auth/register', dataToSend);
+      const response = await axios.post('https://eventmanagement-backend-2.onrender.com/api/auth/register', dataToSend);
       toast.success('User added successfully!', {
         position: 'top-center',
       });

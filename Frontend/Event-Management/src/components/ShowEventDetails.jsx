@@ -36,7 +36,7 @@ const ShowEventDetails = () => {
       }
 
       const response = await axios.post(
-        `http://localhost:5000/api/event/book/${id}`, 
+        `https://eventmanagement-backend-2.onrender.com/api/event/book/${id}`, 
         {}, 
         {
           headers: {

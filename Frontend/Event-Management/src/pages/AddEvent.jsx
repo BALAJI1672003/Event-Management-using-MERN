@@ -52,7 +52,7 @@ const AddEvent = () => {
     try {
       setUploading(true);
       const token = localStorage.getItem('token'); // Get the token from local storage
-      const response = await axios.post('http://127.0.0.1:5000/api/event/addEvent', formDataWithImage, {
+      const response = await axios.post('https://eventmanagement-backend-2.onrender.com/api/event/addEvent', formDataWithImage, {
         headers: {
           'Content-Type': 'multipart/form-data', 
           'Authorization': `Bearer ${token}` // Send the token in the request header

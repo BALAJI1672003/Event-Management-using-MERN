@@ -7,13 +7,11 @@ import { Link, useNavigate } from 'react-router-dom';
 const HomePage = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-
-  // Redirect to login if no token is present
-  // React.useEffect(() => {
-  //   if (!token) {
-  //     navigate('/'); // Redirect to home or login page
-  //   }
-  // }, [token, navigate]);
+  React.useEffect(() => {
+    if (!token) {
+      navigate('/'); 
+    }
+  }, [token, navigate]);
 
   return (
     <>
@@ -26,7 +24,7 @@ const HomePage = () => {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="md:w-1/2 h-80 md:h-full min-h-32 flex justify-center"
+            className="flex justify-center md:w-1/2 h-80 md:h-full min-h-32"
           >
             <img
               src={collegeEventImage}

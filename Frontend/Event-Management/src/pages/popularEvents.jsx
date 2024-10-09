@@ -19,7 +19,7 @@ const PopularEvents = () => {
   useEffect(() => {
     const fetchPopularEvents = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/event/popular');
+        const response = await axios.get('https://eventmanagement-backend-2.onrender.com/api/event/popular');
         setPopularEvents(response.data);
       } catch (error) {
         console.error('Error fetching popular events:', error);

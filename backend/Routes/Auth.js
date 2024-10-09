@@ -51,7 +51,7 @@ router.get('/users', async (req, res) => {
 
 router.delete('/users/:id', async (req, res) => {
   try {
-    await User.findByIdAndDelete(req.params.id); // Delete user by ID
+    await User.findByIdAndDelete(req.params.id);
     res.json({ message: 'User deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Something went wrong' });
