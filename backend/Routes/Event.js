@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 router.post('/addEvent', auth, upload.single('image'), async (req, res) => {
-  // Check if the user is an admin
   if (!req.user.isAdmin) {
     return res.status(403).send('Access Denied');
   }
